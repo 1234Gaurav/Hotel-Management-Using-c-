@@ -1,32 +1,611 @@
-# Prerequisites
-*.d
+﻿#include<iostream>
+#include<stdio.h>
+#include<conio.h>
+using namespace std;
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+void booking_room();
+void order_food();
+void otp_function();
+long mob;
+int otp, room_number, room_price=0;
+char name[32], email[50];
+int reserved_rooms=0, rooms_days=0;
 
-# Precompiled Headers
-*.gch
-*.pch
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+int main()
+{
+after_main:
+    int choise;
+    cout<<"\t\tWELCOME to TAJ Hotel.\n\n";
+main:
+    cout<<"\nEnter 1 for Booking a room.\nEnter 2 for Ordering Food.\nEnter 0 for Exit.\n\nEnter Your Choise : ";
+    cin>>choise;
 
-# Fortran module files
-*.mod
-*.smod
+    if(choise==1)
+    {
+        clrscr();
+        booking_room();
+    }
+    else if(choise==2)
+    {
+        clrscr();
+        order_food();
+    }
+    else if(choise==0)
+    {
+        goto end;
+    }
+    else
+    {
+        clrscr();
+        cout<<"Enter Valid Number...!";
+        goto main;
+    }
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+end:
 
-# Executables
-*.exe
-*.out
-*.app
+    clrscr();
+    cout<<"\n\nEnter 1 Re-start Program : ";
+    cin>>choise;
+    if(choise==1)
+    {
+        clrscr();
+        goto after_main;
+    }
+    return 0;
+}
+
+void booking_room()
+{
+    int choise;
+
+bookingmenu_room:
+    cout<<"Booking Menu : (Note : Enter 3 or 4, when If you allready registered a room).\n\n\t1. Room Details & Prices.\n\t2. Booking a Room.\n\t3. Edit Records\n\t4. Room Cancel\n\t5. Exit.\n";
+    cout<<"Enter Your Choise : ";
+    cin>>choise;
+
+    switch(choise)
+    {
+    //Rooms Details and Prices
+    case 1: //completed
+    {
+        clrscr();
+rooms_DnP:
+        cout<<"1. AC rooms.\n2. Non-AC rooms.\n3. Luxury rooms.\n4. Ordinary rooms.\n5. Regular rooms.\n6. Back.\n\n\nEnter the Room Number You want to know the details of that room : ";
+        cin>>choise;
+        clrscr();
+        cout<<"\t...Rooms Details & Prices...\n\n\n**********************************************\n**********************************************\n\n";
+
+        if(choise==1)
+        {
+            cout<<"From room no. 1-50 : AC Room with 3 large double beds.\nStarting from 10,000₹\t*per night.\nOther Benefits :\n\t1. Bathroom 🛀.\n\t2. TV📺.\n\t3. Soundproofing🔇.\n\t4. minibar🍸.\n\t5. refrigerator.\n\t6. tea-coffee maker☕.\n\t7. Elecric kettle.\n\t8. Free wifi📶.\n\t9. patio.\n\t10. garden view🌄.\n\t*And More. \n**********************************************\n\n";
+        }
+        else if(choise==2)
+        {
+            cout<<"From room no. 51-150 : Non_AC Room with 2 large double beds.\nStarting from 7,000₹\t*per night.\nOther Benefits :\n\t1. Bathroom 🛀.\n\t2. TV📺.\n\t3. Soundproofing🔇.\n\t4. refrigerator.\n\t5. tea-coffee maker☕.\n\t6. Elecric kettle.\n\t7. Free wifi📶.\n\t8. garden view🌄.\n\t*And More.\n**********************************************\n\n";
+        }
+        else if(choise==3)
+        {
+            cout<<"From room no. 151-400 : Luxury Room with 2 single beds.\nStarting from 5,000₹\t*per night.\nOther Benefits :\n\t1. Bathroom 🛀.\n\t2. TV📺.\n\t3. Soundproofing🔇.\n\t4. refrigerator.\n\t5. tea-coffee maker☕.\n\t6. Elecric kettle.\n\t7. Free wifi📶.\n\t*And More.\n**********************************************\n\n";
+        }
+        else if(choise==4)
+        {
+            cout<<"From room no. 401-650 : Ordinary Room with 2 single beds.\nStarting from 2,000₹\t*per night.\nOther Benefits :\n\t1. TV📺.\n\t2. Soundproofing🔇.\n\t3. refrigerator.\n\t4. tea-coffee maker☕.\n\t5 . Free wifi📶.\n\t*And More \n**********************************************\n\n";
+        }
+        else if(choise==5)
+        {
+            cout<<"From room no. 651-1000 : Regular Room with 1 single bed.\nStarting from 1,000₹\t*per night.\nOther Benefits :\n\t1. Soundproofing🔇.\n\t2. tea-coffee maker☕.\n\t 3. Free wifi📶.\n\t*And More.\n**********************************************\n\n";
+        }
+        else if(choise==6)
+        {
+            clrscr();
+            goto bookingmenu_room;
+        }
+        else
+        {
+            clrscr();
+            cout<<"Enter valid Number...!\n\n\n";
+            goto rooms_DnP;
+        }
+        cout<<"\n\nEnter 1 for Back.\nor Enter any number to Exit.\nEnter Choise : ";
+        cin>>choise;
+        if(choise==1)
+        {
+            clrscr();
+            goto rooms_DnP;
+        }
+        else
+        {
+            clrscr();
+            cout<<"Have a great day...";
+            break;
+        }
+    }
+//Booking a Room
+    case 2:
+    {
+
+
+        /*sign up page here.*/
+        clrscr();
+        cout<<"\nEnter 1 : If your Citizen ship is India.\nEnter 2 : If your Citizen ship is non-Indian.\nEnter 3 : for Back.\nEnter any number : for Exit\nEnter Choise : ";
+        cin>>choise;
+        clrscr();
+        if(choise==1)
+        {
+            cout<<"\t***Sign Up First***\n\n\n";
+            otp_function();
+        }
+        else if(choise==2)
+        {
+            clrscr();
+            cout<<"People other than Indian Country Not allowed to Book the Room.\nThank You...!\n\nEnter any number for continue : ";
+            cin>>choise;
+            break;
+        }
+        else if(choise==3)
+        {
+            clrscr();
+            goto bookingmenu_room;
+        }
+        else
+        {
+            break;
+        }
+
+        cout<<"Enter any number for Booking a Room.\nEnter : ";
+        int temp;
+        cin>>temp;
+
+        clrscr();
+booking_a_room:
+        cout<<"\t....Booking a Room...\n\n\n**********************************************\n**********************************************\n\nEnter 1 for AC rooms.\nEnter 2 for NON-AC rooms.\nEnter 3 for LUXURY rooms.\nEnter 4 for ORDINARY rooms.\nEnter 5 for REGULAR rooms.\nEnter 6 for Back.\n";
+        cout<<"Enter Choise : ";
+        cin>>choise;
+        //ac room booking
+        if(choise==1)
+        {
+            room_price = 10000;
+            clrscr();
+            cout<<"\t...AC Rooms Booking...\n\n\n**********************************************\n**********************************************\n\n\n";
+
+        }
+        //non- ac room booking
+        else if(choise==2)
+        {
+            room_price = 7000;
+            clrscr();
+            cout<<"\t...NON-AC Rooms Booking...\n\n\n**********************************************\n**********************************************\n\n\n";
+
+        }
+        //Luxury room booking
+        else if(choise==3)
+        {
+            room_price = 5000;
+            clrscr();
+            cout<<"\t...LUXURY Rooms Booking...\n\n\n**********************************************\n**********************************************\n\n\n";
+
+        }
+        //Ordinary room booking
+        else if(choise==4)
+        {
+            room_price = 2000;
+            clrscr();
+            cout<<"\t...ORDINARY Rooms Booking...\n\n\n**********************************************\n**********************************************\n\n\n";
+
+        }
+        //regular room booking
+        else if(choise==5)
+        {
+            room_price = 1000;
+            clrscr();
+            cout<<"\t...REGULAR Rooms Booking...\n\n\n**********************************************\n**********************************************\n\n\n";
+        }
+        else if(choise==6)
+        {
+            clrscr();
+            goto bookingmenu_room;
+        }
+        else
+        {
+            clrscr();
+            cout<<"Enter valid Number...!\n\n\n";
+            goto booking_a_room;
+        }
+        //Get Information from Room Booker
+        //int reserved_rooms=0, rooms_days=0;
+        cout<<"How many Rooms You Have to Reserve : ";
+        cin>>reserved_rooms;
+        cout<<"How many Days you have to reserve this "<<reserved_rooms<<" Rooms : ";
+        cin>>rooms_days;
+
+        clrscr();
+        cout<<"\t    ... Payment ...\n\nYou reserved "<<reserved_rooms<<" Rooms. for "<<rooms_days<<" Days.\n=  "<<room_price<<"×"<<reserved_rooms<<"×"<<rooms_days<<"  =  "<<room_price*reserved_rooms*rooms_days<<" ₹.\n\nEnter any number for conform payment.\nor enter 0 for Back.\nEnter choise : ";
+        cin>>choise;
+        if(choise==0)
+        {
+            clrscr();
+            goto booking_a_room;
+        }
+
+        clrscr();
+        cout<<"\n\n\n\n\t...Rooms Reserved Successfully ✅...\n\n\n\n\nEnter 1 for View Profile.\nor Enter 2 for booking menu.\nEnter 0 For Exit\n";
+        cout<<"Enter choise : ";
+        cin>>choise;
+        if(choise==1)
+        {
+            clrscr();
+            cout<<"\t... Profile ....\n\n\nName : "<<name<<"\nMobile Number : "<<mob<<"\nE-Mail : "<<email<<"\n\nRoom Booked : "<<reserved_rooms<<". For "<<rooms_days<<" Days.\nMoney paid : "<<room_price*reserved_rooms*rooms_days<<" ₹.\n\n";
+            cin>>choise;
+        }
+        else if(choise==2)
+        {
+            clrscr();
+            goto bookingmenu_room;
+        }
+
+        break;
+    }
+//Edit Record
+    case 3:
+    {
+
+
+        /*sign up page here.*/
+        clrscr();
+        cout<<"\t***Log in First***\n\n\n";
+        otp_function();
+        cout<<"Enter any number for Edit Records.\nEnter : ";
+        int temp;
+        cin>>temp;
+
+
+        clrscr();
+edit_records:
+        cout<<"\t...Edit Records...\n\n\n\nEnter 1 for AC rooms.\nEnter 2 for NON-AC rooms.\nEnter 3 for LUXURY rooms.\nEnter 4 for ORDINARY rooms.\nEnter 5 for REGULAR rooms.\n";
+        cout<<"Enter Choise : ";
+        cin>>choise;
+        //ac room booking
+        if(choise==1)
+        {
+            room_price = 10000;
+            clrscr();
+            cout<<"\t...AC Rooms Booking...\n\n\n**********************************************\n**********************************************\n\n\n";
+
+        }
+        //non- ac room booking
+        else if(choise==2)
+        {
+            room_price = 7000;
+            clrscr();
+            cout<<"\t...NON-AC Rooms Booking...\n\n\n**********************************************\n**********************************************\n\n\n";
+
+        }
+        //Luxury room booking
+        else if(choise==3)
+        {
+            room_price = 5000;
+            clrscr();
+            cout<<"\t...LUXURY Rooms Booking...\n\n\n**********************************************\n**********************************************\n\n\n";
+
+        }
+        //Ordinary room booking
+        else if(choise==4)
+        {
+            room_price = 2000;
+            clrscr();
+            cout<<"\t...ORDINARY Rooms Booking...\n\n\n**********************************************\n**********************************************\n\n\n";
+
+        }
+        //regular room booking
+        else if(choise==5)
+        {
+            room_price = 1000;
+            clrscr();
+            cout<<"\t...REGULAR Rooms Booking...\n\n\n**********************************************\n**********************************************\n\n\n";
+
+        }
+        else
+        {
+            clrscr();
+            cout<<"Enter Valid Number...!\n\n\n";
+            goto edit_records;
+        }
+        cout<<"How many Rooms You Have to Reserve : ";
+        cin>>reserved_rooms;
+        cout<<"How many Days you have to reserve this "<<reserved_rooms<<" Rooms : ";
+        cin>>rooms_days;
+        cout<<endl<<"Enter first name : ";
+        cin>>name;
+        cout<<"Enter Phone number : ";
+        cin>>mob;
+        cout<<"Enter E-mail : ";
+        cin>>email;
+        clrscr();
+        cout<<"\t    ... Payment ...\n\nYou reserved "<<reserved_rooms<<" Rooms. for "<<rooms_days<<" Days.\n=  "<<room_price<<"×"<<reserved_rooms<<"×"<<rooms_days<<"  =  "<<room_price*reserved_rooms*rooms_days<<" ₹.\n\nEnter 1 for conform payment.\nor enter 0 for exit.\nEnter choise : ";
+        cin>>choise;
+        if(choise==0)
+        {
+            break;
+        }
+
+        clrscr();
+        cout<<"\n\n\n\n\t...Rooms Reserved Successfully ✅...\n\n\n\n\nEnter 1 for View Profile.\nor Enter 2 for booking menu.\nEnter 0 For Exit";
+        cout<<"Enter choise : ";
+        cin>>choise;
+        if(choise==1)
+        {
+            clrscr();
+            cout<<"\t... Profile ....\n\n\nName : "<<name<<"\nMobile Number : "<<mob<<"\nE-Mail : "<<email<<"\n\nRoom Booked : "<<reserved_rooms<<". For "<<rooms_days<<" Days.\nMoney paid : "<<room_price*reserved_rooms*rooms_days<<" ₹.\n\n";
+        }
+        else if(choise==2)
+        {
+            clrscr();
+            goto bookingmenu_room;
+        }
+
+        break;
+    }
+//Room Cancel
+    case 4:
+    {
+        long mob;
+        char name[32], email[50];
+        int otp=0;
+        clrscr();
+        cout<<"\t...Room Cancellation...\n\n\n\nEnter Security details first...!\n\n";
+        otp_function();
+        char reason[10];
+        cout<<"\nEnter Reason for cancelling Room (optional): ";
+        cin>>reason;
+        clrscr();
+        cout<<"***ATTENTION*** you are cancelling Room\n\nEnter 1 For Cancel Room.\nEnter 2 for back to main menu.\nor Enter any key for Exit.";
+        cout<<"\n\nEnter Choise : ";
+        cin>>choise;
+        if(choise==1)
+        {
+            clrscr();
+            cout<<"Room Canceled Successfully...!\nHave a Nice Day...😊\n\n\n\nEnter 1 for Booking menu.\nEnter any number for exit.\nEnter : ";
+            cin>>choise;
+            if(choise == 1)
+            {
+                clrscr();
+                goto bookingmenu_room;
+            }
+        }
+        else if(choise==2)
+        {
+            clrscr();
+            goto bookingmenu_room;
+        }
+        break;
+    }
+//Exit
+    case 5:
+    {
+        clrscr();
+        cout<<"Have a Nice Day...😊\n";
+        break;
+    }
+    default:
+    {
+        clrscr();
+        cout<<"Enter Valid Number...!\n\n\n";
+        goto bookingmenu_room;
+    }
+    }
+}
+
+void order_food()
+{
+    clrscr();
+    int choise;
+    cout<<"\t***Taj Restaurant***\n\n**********************************************\n**********************************************\n\n\n";
+    cout<<"Enter 1 for Food Menu.\n*(more options coming soon).\nEnter 0 for Exit.\n\nEnter choise : ";
+    cin>>choise;
+    switch(choise)
+    {
+    case 1:
+    {
+        clrscr();
+food_menu:
+        cout<<"\n**********************************************\n\t   ***Food Menu***\n**********************************************\n";
+        cout<<"••Food••\t\t••Price(₹)••\n\n1. Chai \t = \t  5\n2. Samosa \t = \t  15\n3. Sweets \t = \t  50\n4. Roti \t = \t  7\n5. Shev Bhaji \t = \t  60\n6. Kaju Kari \t = \t  80\n7. Dal Tadka \t = \t  40\n8. Edli-Dosa \t = \t  30\n9. Cold Drinks \t = \t  20\n10. Paneer \t = \t  120\n**********************************************\n\n\nEnter Food Number : ";
+        cin>>choise;
+        int food_price, food_plates;
+        if(choise==1)
+        {
+            food_price = 5;
+        }
+        else if(choise==2)
+        {
+            food_price = 15;
+        }
+        else if(choise==3)
+        {
+            food_price = 50;
+        }
+        else if(choise==4)
+        {
+            food_price = 7;
+        }
+        else if(choise==5)
+        {
+            food_price = 60;
+        }
+        else if(choise==6)
+        {
+            food_price = 80;
+        }
+        else if(choise==7)
+        {
+            food_price = 40;
+        }
+        else if(choise==8)
+        {
+            food_price = 30;
+        }
+        else if(choise==9)
+        {
+            food_price = 20;
+        }
+        else if(choise==10)
+        {
+            food_price = 120;
+        }
+        else
+        {
+            clrscr();
+            cout<<"Enter Valid Number...!\n\n";
+            goto food_menu;
+        }
+        cout<<"How many plates/Cups you want? : ";
+        cin>>food_plates;
+        clrscr();
+food_payment:
+        cout<<"\t  ***Payment***\n\n\n";
+        if(choise==1)
+        {
+            cout<<"You ordered "<<food_plates<<" plates/cups of Chai : \n\t "<<food_plates<<" × "<<food_price<<" = "<<food_plates*food_price<<" ₹.\n\n";
+        }
+        else if(choise==2)
+        {
+            cout<<"You ordered "<<food_plates<<" plates/cups of Samosa : \n\t "<<food_plates<<" × "<<food_price<<" = "<<food_plates*food_price<<" ₹.\n\n";
+        }
+        else if(choise==3)
+        {
+            cout<<"You ordered "<<food_plates<<" plates/cups of Sweets : \n\t "<<food_plates<<" × "<<food_price<<" = "<<food_plates*food_price<<" ₹.\n\n";
+        }
+        else if(choise==4)
+        {
+            cout<<"You ordered "<<food_plates<<" plates/cups of Roti : \n\t "<<food_plates<<" × "<<food_price<<" = "<<food_plates*food_price<<" ₹.\n\n";
+        }
+        else if(choise==5)
+        {
+            cout<<"You ordered "<<food_plates<<" plates/cups of Shev Bhaji : \n\t "<<food_plates<<" × "<<food_price<<" = "<<food_plates*food_price<<" ₹.\n\n";
+        }
+        else if(choise==6)
+        {
+            cout<<"You ordered "<<food_plates<<" plates/cups of Kaju kari : \n\t "<<food_plates<<" × "<<food_price<<" = "<<food_plates*food_price<<" ₹.\n\n";
+        }
+        else if(choise==7)
+        {
+            cout<<"You ordered "<<food_plates<<" plates/cups of Dal Tadka : \n\t "<<food_plates<<" × "<<food_price<<" = "<<food_plates*food_price<<" ₹.\n\n";
+        }
+        else if(choise==8)
+        {
+            cout<<"You ordered "<<food_plates<<" plates/cups of Edli-Dosa : \n\t "<<food_plates<<" × "<<food_price<<" = "<<food_plates*food_price<<" ₹.\n\n";
+        }
+        else if(choise==9)
+        {
+            cout<<"You ordered "<<food_plates<<" plates/cups of Cold Drink : \n\t "<<food_plates<<" × "<<food_price<<" = "<<food_plates*food_price<<" ₹.\n\n";
+        }
+        else if(choise==10)
+        {
+            cout<<"You ordered "<<food_plates<<" plates/cups of Paneer : \n\t "<<food_plates<<" × "<<food_price<<" = "<<food_plates*food_price<<" ₹.\n\n";
+        }
+        else
+        {
+            clrscr();
+            cout<<"Enter Valid Number...!\n\n";
+            goto food_payment;
+        }
+        int choised;
+        cout<<"\nEnter 1 for Conform payment.\nEnter 0 for Exit.\nEnter Choise : ";
+        cin>>choised;
+        if(choised==1)
+        {
+            clrscr();
+            char name[20];
+            cout<<"Enter First name for print on Bill : ";
+            cin>>name;
+            clrscr();
+            cout<<"\n\n\n\t...Bill paid Successfully✅...\n\Enjoy your Food.😋\n**********************************************\n\n\n\nEnter 1 for buying more food.\nEnter 0 for Exit.\nEnter choise : ";
+            cin>>choise;
+            if(choise==1)
+            {
+                clrscr();
+                goto food_menu;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+    }
+
+    }//switch end
+}//function end
+void otp_function()
+{
+    cout<<endl<<"Enter first name : ";
+    cin>>name;
+mob_num:
+    cout<<"Enter Phone number : +91 ";
+    cin>>mob;
+    if(mob<1000000000 || mob>9999999999)
+    {
+        clrscr();
+        cout<<"\nEnter Valid mobile number...!\n";
+        goto mob_num;
+    }
+    clrscr();
+    cout<<"Otp send to +91 "<<mob<<"  successfully.\n\n";
+mob_otp1:
+    cout<<"\t...(otp = 8679)...\nEnter otp here : ";
+    cin>>otp;
+    clrscr();
+    if(otp==8679)
+    {
+        cout<<"\nMobile Number Verification succesful.✅\n\n";
+    }
+    else
+    {
+        cout<<"Incorrect OTP...!\tTry again.\n\nEnter otp : ";
+        goto mob_otp1;
+    }
+email_address:
+    cout<<"Enter E-mail : ";
+    cin>>email;
+    int temp=0;
+    for(int i=0; i<50; i++)
+    {
+        if(email[i]=='@')
+        {
+            temp=1;
+        }
+        if(temp==1)
+        {
+            break;
+        }
+        else
+        {
+            temp=0;
+        }
+    }
+    if(temp==1)
+    {
+        clrscr();
+        cout<<"Otp send to : "<<email<<"  successfully.\n\n";
+email_otp1:
+        cout<<"\t...(otp = 3464)...\nEnter otp here : ";
+        cin>>otp;
+        clrscr();
+        if(otp==3464)
+        {
+            cout<<"Email Verification succesful.✅\n\n";
+        }
+        else
+        {
+            cout<<"Incorrect OTP...!\tTry again.\n\nEnter otp : ";
+            goto email_otp1;
+        }
+    }
+    else if(temp==0)
+    {
+        clrscr();
+        cout<<"Enter Valid E-mail...!\n";
+        goto email_address;
+    }
+}//otp function end
